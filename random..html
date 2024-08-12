@@ -115,7 +115,7 @@
             arrow.style.transform = `translate(-50%, -100%) rotate(${degrees}deg)`;
 
             arrow.addEventListener('transitionend', function () {
-                const correctedDegrees = (degrees - 50) % 360; // Корректировка на 20 градусов
+                const correctedDegrees = (degrees - 70) % 360; // Корректировка на 20 градусов
                 let selectedIndex = Math.floor(correctedDegrees / 40) % 9;
                 // Убираем лишний шаг влево, чтобы корректно выбрать имя
                 const selectedName = document.querySelectorAll('.name-card')[selectedIndex].textContent;
