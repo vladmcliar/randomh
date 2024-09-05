@@ -1,4 +1,4 @@
 sqlalchemy
-psycopg2-binary
 cloud-sql-python-connector[asyncpg]
 python-dotenv
+asyncpg
