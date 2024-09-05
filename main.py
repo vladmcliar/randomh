@@ -5,7 +5,7 @@ from datetime import datetime
 import streamlit as st
 
 # Имена для рандомайзера
-names_list = ["Андрей", "Сергей", "Иван", "Вероника", "Катя", "Даня", "Маша", "Таня", "Влад"]
+names_list = ["Андрей", "Сергей", "Иван", "Вероника", "Катя", "Даня", "Маша", "Таня", "Влад", "Наташа"]
 
 # Файл для сохранения результатов
 filename = "used_names.csv"
@@ -44,6 +44,7 @@ def get_random_name(used_names_df):
 
 # Основная функция
 def main():
+    st.image("static/logo.png", use_column_width=True)
     st.title("Рандомайзер Имен")
     st.write("Случайный выбор имени из списка:")
     
