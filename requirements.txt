@@ -1,0 +1,4 @@
+sqlalchemy
+psycopg2
+google-cloud-sql
+python-dotenv
