@@ -9,4 +9,4 @@ DB_NAME = os.getenv('DB_NAME')
 CLOUD_SQL_CONNECTION_NAME = os.getenv('CLOUD_SQL_CONNECTION_NAME')
 
 def get_database_url():
-    return f'postgresql+psycopg2://{DB_USER}:{DB_PASS}@localhost/{DB_NAME}?host=/cloudsql/{CLOUD_SQL_CONNECTION_NAME}'
+    return f'postgresql+asyncpg://{DB_USER}:{DB_PASS}@localhost/{DB_NAME}?host=/cloudsql/{CLOUD_SQL_CONNECTION_NAME}'
