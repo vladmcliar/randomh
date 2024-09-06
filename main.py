@@ -100,8 +100,19 @@ async def get_random_name(session):
     except Exception as e:
         logger.error(f"Ошибка при выборе или сохранении имени: {e}")
         st.error("Произошла ошибка при обработке имени.")
+        
+async def get_leading_history(session):
+    """Получает историю ведущих из базы данных."""
+    try:
+        result = await session.execute(select(used_names_table).order_by(used_names_table.c.date.desc()))
+        records = result.fetchall()
+        logger.info("Успешно загружена история ведущих.")
+        return pd.DataFrame(records, columns=["id", "Name", "Date"])
+    except Exception as e:
+        logger.error(f"Ошибка при загрузке истории ведущих: {e}")
+        st.error("Не удалось загрузить историю ведущих.")
+        return pd.DataFrame(columns=["id", "Name", "Date"])
 
-# Основная функция
 async def main():
     """Основная функция приложения Streamlit."""
     await create_tables()
@@ -120,9 +131,18 @@ async def main():
                 await session.execute(delete(used_names_table))
                 await session.commit()
                 logger.info("База данных очищена по запросу пользователя.")
+
+            if st.button("Показать историю ведущих"):
+                history_df = await get_leading_history(session)
+                if not history_df.empty:
+                    st.write(history_df.to_string(index=False, header=["Дата", "Имя"]))
+                else:
+                    st.write("История ведущих пуста.")
+                
     except Exception as e:
         logger.error(f"Ошибка в основной функции: {e}")
         st.error("Произошла ошибка при взаимодействии с базой данных.")
+
 
 # Запуск основной функции
 if __name__ == "__main__":
