@@ -1,10 +1,13 @@
-import streamlit as st
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+DB_NAME = meticulous-empathy
+DB_HOST = "autorack.proxy.rlwy.net"
+DB_PORT = "5432"
 
 def get_database_url():
-    DB_USER = st.secrets["DB_USER"]
-    DB_PASS = st.secrets["DB_PASS"]
-    DB_NAME = st.secrets["DB_NAME"]
-    CLOUD_SQL_CONNECTION_NAME = st.secrets["CLOUD_SQL_CONNECTION_NAME"]
-    DB_HOST = "35.232.235.84"  # Укажите ваш хост
-    return f'postgresql+asyncpg://{DB_USER}:{DB_PASS}@{DB_HOST}'
+    return f'postgresql+asyncpg://{DB_HOST}:{DB_PORT}/{DB_NAME}'
+
 
