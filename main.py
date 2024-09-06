@@ -104,21 +104,21 @@ async def get_random_name(session):
 async def get_leading_history(session):
     """Получает историю ведущих из базы данных."""
     try:
-        result = await session.execute(select(used_names_table).order_by(used_names_table.c.date.desc()))
+        result = await session.execute(
+            select(used_names_table).order_by(used_names_table.c.date.desc())
+        )
         records = result.fetchall()
         
         # Преобразование результатов в DataFrame
-        df = pd.DataFrame(records, columns=["id", "name", "date"])
-
-        # Переименование колонок
-        df.columns = ["id", "Name", "Date"]
+        df = pd.DataFrame(records, columns=result.keys())
         
         logger.info("Успешно загружена история ведущих.")
         return df
     except Exception as e:
         logger.error(f"Ошибка при загрузке истории ведущих: {e}")
         st.error("Не удалось загрузить историю ведущих.")
-        return pd.DataFrame(columns=["id", "Name", "Date"])
+        return pd.DataFrame()
+
 
 
 async def main():
