@@ -6,5 +6,5 @@ def get_database_url():
     DB_NAME = st.secrets["DB_NAME"]
     CLOUD_SQL_CONNECTION_NAME = st.secrets["CLOUD_SQL_CONNECTION_NAME"]
 
-    return f'postgresql+asyncpg://{DB_USER}:{DB_PASS}@/{DB_NAME}?host=/cloudsql/{CLOUD_SQL_CONNECTION_NAME}'
+    return f'postgresql+asyncpg://{DB_USER}:{DB_PASS}@10.54.48.3?host=/cloudsql/{CLOUD_SQL_CONNECTION_NAME}'
 
