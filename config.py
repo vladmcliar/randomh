@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DB_NAME = meticulous-empathy
+DB_NAME = "meticulous-empathy"
 DB_HOST = "autorack.proxy.rlwy.net"
 DB_PORT = "5432"
 
