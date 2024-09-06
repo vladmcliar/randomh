@@ -135,10 +135,16 @@ async def main():
                 await get_random_name(session)
 
             if st.button("Сбросить все"):
-                st.warning("Очищаю базу данных и начинаю заново.")
-                await session.execute(delete(used_names_table))
-                await session.commit()
-                logger.info("База данных очищена по запросу пользователя.")
+                st.button('Да я правда хочу стереть всю базу данных')
+                st.button('Я передумал')
+                if st.button('Да я правда хочу стереть всю базу данных'):
+                
+                    st.warning("Очищаю базу данных и начинаю заново.")
+                    await session.execute(delete(used_names_table))
+                    await session.commit()
+                    logger.info("База данных очищена по запросу пользователя.")
+                elif st.button('Я передумал'):
+                    None
 
             if st.button("Показать историю ведущих"):
                 history_df = await get_leading_history(session)
