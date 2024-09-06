@@ -105,6 +105,7 @@ async def get_random_name(session):
 async def main():
     """Основная функция приложения Streamlit."""
     await create_tables()
+    st.image("static/logo.png", use_column_width=False)
     st.title("Кто ведет MN?")
     st.write("Решит удача и немного кода:")
 
