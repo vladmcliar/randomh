@@ -143,7 +143,7 @@ async def main():
             if st.button("Показать историю ведущих"):
                 history_df = await get_leading_history(session)
                 if not history_df.empty:
-                    st.write(history_df.to_string(index=False, header=["Дата", "Имя"]))
+                    st.write(history_df.to_string(index=False))
                 else:
                     st.write("История ведущих пуста.")
                 
