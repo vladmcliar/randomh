@@ -3,10 +3,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DB_USER = 'postgres'
-DB_PASS = 'jiztix-toXnu9-qosxut'
-DB_NAME = 'postgres'
-CLOUD_SQL_CONNECTION_NAME = 'nmrandom:us-central1:mnrandom'
+DB_USER = st.secrets["DB_USER"]
+DB_PASS = st.secrets["DB_PASS"]
+DB_NAME = st.secrets["DB_NAME"]
+CLOUD_SQL_CONNECTION_NAME = st.secrets["CLOUD_SQL_CONNECTION_NAME"]
 
 def get_database_url():
-    return f'postgresql+asyncpg://{DB_USER}:{DB_PASS}@35.232.235.84/{DB_NAME}?host=/cloudsql/{CLOUD_SQL_CONNECTION_NAME}'
+    return f'postgresql+asyncpg://{DB_USER}:{DB_PASS}@localhost/{DB_NAME}?host=/cloudsql/{CLOUD_SQL_CONNECTION_NAME}'
