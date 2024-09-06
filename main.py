@@ -106,12 +106,20 @@ async def get_leading_history(session):
     try:
         result = await session.execute(select(used_names_table).order_by(used_names_table.c.date.desc()))
         records = result.fetchall()
+        
+        # Преобразование результатов в DataFrame
+        df = pd.DataFrame(records, columns=["id", "name", "date"])
+
+        # Переименование колонок
+        df.columns = ["id", "Name", "Date"]
+        
         logger.info("Успешно загружена история ведущих.")
-        return pd.DataFrame(records, columns=["id", "Name", "Date"])
+        return df
     except Exception as e:
         logger.error(f"Ошибка при загрузке истории ведущих: {e}")
         st.error("Не удалось загрузить историю ведущих.")
         return pd.DataFrame(columns=["id", "Name", "Date"])
+
 
 async def main():
     """Основная функция приложения Streamlit."""
