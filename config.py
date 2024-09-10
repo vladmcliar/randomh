@@ -1,16 +1,9 @@
-import os
-from dotenv import load_dotenv
+import streamlit as st
 
-load_dotenv()
-
-DB_USER = "postgres"
-DB_PASS = "hoWgrRiYylsODDTFQqjpqlEmZyAFrTea"
-DB_NAME = "railway"
-DB_HOST = "autorack.proxy.rlwy.net"
-DB_PORT = "11629"
+password = st.secrets["database"]["pass"]
 
 def get_database_url():
-    return 'postgresql+asyncpg://postgres:SqjahzQLUEiiBXAcafADkiJIcvcOFNCd@autorack.proxy.rlwy.net:20211/railway'
+    return f'postgresql+asyncpg://postgres:{password}@autorack.proxy.rlwy.net:20211/railway'
 
 
 
