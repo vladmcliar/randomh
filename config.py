@@ -10,7 +10,7 @@ DB_HOST = "autorack.proxy.rlwy.net"
 DB_PORT = "11629"
 
 def get_database_url():
-    return 'postgresql+asyncpg://postgres:hoWgrRiYylsODDTFQqjpqlEmZyAFrTea@autorack.proxy.rlwy.net:11629/railway'
+    return 'postgresql+asyncpg://postgres:SqjahzQLUEiiBXAcafADkiJIcvcOFNCd@autorack.proxy.rlwy.net:20211/railway'
 
 
 
